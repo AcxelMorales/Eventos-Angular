@@ -1,0 +1,32 @@
+<form ngNativeValidate [formGroup]="form" #f="ngForm" (ngSubmit)="getData(f)">
+  <fieldset class="uk-fieldset uk-margin">
+    <legend class="uk-legend uk-text-center">
+      Busca tu evento por nombre o categoría
+    </legend>
+  </fieldset>
+  <div class="uk-column-1-3@m uk-margin">
+    <div class="uk-margin" uk-margin="true">
+      <input 
+        type="text" 
+        name="nombre" 
+        class="uk-input" 
+        placeholder="Nombre de Evento o Ciudad"
+        formControlName="nombre"
+        required />
+    </div>
+    <div class="uk-margin" uk-margin="true">
+      <select
+        name="categoria" 
+        class="uk-select"
+        formControlName="categoria"
+        required>
+        <!-- Opciones -->
+        <option *ngFor="let i of categorias" [value]="i.id">{{ i.name_localized }}</option>
+      </select>
+    </div>
+    <div class="uk-margin" uk-margin="true">
+      <input type="submit" class="uk-button uk-button-danger" value="Buscar Eventos" />
+    </div>
+  </div>
+</form>
+<app-eventos [eventos]="eventos"></app-eventos>
